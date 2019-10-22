@@ -61,6 +61,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
 MainWindow::~MainWindow()
 {
     qWarning("saving");
+    shortcuts->writeToFile();
     delete shortcuts;
     delete ui;
 

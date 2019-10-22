@@ -88,12 +88,12 @@ void event_filter::setShortcut( Apps application)
 
     foreach(quint32 maskMods , maskModifiers())
     {
-        XGrabKey(m_display,         // указываем соединение с X11
-                 key_code ,          // код клавиши
-                 modifier | maskMods,   // модификатор со всеми возможными масками
-                 m_win,             // Захватываемое окно
-                 True,              // Является ли приложение владельцем события. в данном примере не принципиально.
-                 GrabModeAsync,     // Ассинхронный режим обработки
+        XGrabKey(m_display,         //  specify connection with X11 server
+                 key_code ,          // key code
+                 modifier | maskMods,   // modifier
+                 m_win,             // window to look
+                 True,
+                 GrabModeAsync,
                  GrabModeAsync);
     }
 }
@@ -127,7 +127,6 @@ void event_filter::upadteHotKeys(KeyCode new_hotkey, Apps app , unsigned int mod
     }
 
     setShortcut(app);
-    qDebug() << "Keycode in event filter "<<_icon_keycode;
 
 }
 

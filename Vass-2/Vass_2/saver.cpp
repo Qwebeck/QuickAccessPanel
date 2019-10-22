@@ -75,37 +75,6 @@ std::vector<int> Saver::read_modifiers()
 }
 
 
-void Saver::save_music(const QMediaPlaylist& songs)
-{
-  QJsonArray arr;
-  for (int i=0;i<songs.mediaCount();i++)
-  {
-      arr.append(songs.media(i).canonicalUrl().toString());
-  }
-
-  this->settings_obj.insert("song list",arr);
-  save();
-}
-
-QStringList Saver::load_music()
-{
-
-  QJsonDocument Saved_Data = open_file();
-//  read(Saved_Data.object());
-  QJsonArray songlist=Saved_Data.object()["song list"].toArray();
-  QStringList arr;
-  for (auto item : songlist)
-  {
-   arr.append(item.toString());
-  }
-  return arr;
-
-
-
-
-}
-
-
 
 
 

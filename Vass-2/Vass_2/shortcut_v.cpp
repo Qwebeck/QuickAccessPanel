@@ -20,22 +20,16 @@ shortcut_v::shortcut_v(){
     if(tmp_keys[0] == 0 and tmp_keys[1] == 0 and tmp_keys[2] == 0 and tmp_keys[3] == 0){
         _icons = Qt::Key_M;
         _config = Qt::Key_Q;
-        //_time = Qt::Key_T;
-        //_player = Qt::Key_P;
+
         _icons_mod = ControlMask;
-       // _player_mod = ControlMask;
-        //_time_mod = ControlMask;
         _config_mod = ControlMask;
     }else {
         _icons =tmp_keys[0];
         _config = tmp_keys[1];
-       // _time = tmp_keys[2];
-       // _player = tmp_keys[3];
+
         std::vector<int> tmp_mod = saver.read_modifiers();
         _icons_mod = tmp_mod[0];
-        //_player_mod = tmp_mod[1];
-        //_time_mod = tmp_mod[2];
-        _config_mod = tmp_mod[3];
+        _config_mod = tmp_mod[1];
 }
 
    // _hotKeys = {_icons,_config,_time,_player};
@@ -76,6 +70,7 @@ std::string shortcut_v::setModPrefix(unsigned int modifier)
 
 void shortcut_v::writeToFile()
 {
+
     if(_shortcuts_file.isEmpty())return;
     QFile file(_shortcuts_file);
     if(!file.open(QIODevice::WriteOnly))
@@ -84,9 +79,11 @@ void shortcut_v::writeToFile()
         return;
     }
     //
-    QStringList data_to_save;
+    QStringList data_to_save ={};
+    qDebug() << "I am in write to file";
     for(auto& i:_shortcuts_class)
     {
+      qDebug()<<i.get_path();
       data_to_save.append(i.get_path());
     }
 
@@ -108,6 +105,7 @@ void shortcut_v::readFromFile()
     QStringList data_from_file;
     in.setVersion(QDataStream::Qt_4_5);
     in >> data_from_file;
+    qDebug () << "Here we are";
     for(int i = 0 ; i< data_from_file.size();++i)
     {
         parse_names(data_from_file.at(i).toLocal8Bit().constData());

@@ -174,11 +174,11 @@ void config::on_info_clicked()
 {
     if(!_icon_info_active){
     ui->stackedWidget->setCurrentWidget(ui->page_3);
-    ui->info->setText(tr("Hide\nsettings"));
+    ui->info->setText(tr("Show\nsettings"));
     _icon_info_active=true;
     }else {
         ui->stackedWidget->setCurrentWidget(ui->page_4);
-        ui->info->setText(tr("Show\nsettings"));
+        ui->info->setText(tr("Hide\nsettings"));
         _icon_info_active=false;
 }
 }

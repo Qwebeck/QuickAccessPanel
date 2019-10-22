@@ -29,7 +29,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="main_config">
        <attribute name="title">
@@ -379,7 +379,22 @@ shortcut</string>
            </rect>
           </property>
           <layout class="QGridLayout" name="icon_information">
-           <item row="2" column="1">
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Change application 
+location</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QCheckBox" name="always_first">
+             <property name="text">
+              <string>Pin</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
             <widget class="QLabel" name="label_11">
              <property name="text">
               <string>Pin to top</string>
@@ -387,20 +402,13 @@ shortcut</string>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QCheckBox" name="always_first">
+            <widget class="QCheckBox" name="p_ins_i">
              <property name="text">
-              <string>Pin</string>
+              <string>Activate</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>Change current icon</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
+           <item row="0" column="2">
             <widget class="QPushButton" name="chnge_icon_2">
              <property name="styleSheet">
               <string notr="true">QPushButton{background-color:white;border-radius:2px;border:1px solid rgba(0,0,0,0.5)}
@@ -411,37 +419,11 @@ QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Change application 
-location</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="chnge_icon">
-             <property name="styleSheet">
-              <string notr="true">QPushButton{background-color:white;border-radius:2px;border:1px solid rgba(0,0,0,0.5)}
-QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
-             </property>
-             <property name="text">
-              <string>Change</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
+           <item row="2" column="1">
             <widget class="QLabel" name="label_13">
              <property name="text">
               <string>Show picture 
 instead of icon for images</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <widget class="QCheckBox" name="p_ins_i">
-             <property name="text">
-              <string>Activate</string>
              </property>
             </widget>
            </item>
