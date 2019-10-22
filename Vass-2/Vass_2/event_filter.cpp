@@ -44,12 +44,12 @@ bool event_filter::nativeEventFilter(const QByteArray &eventType, void *message,
         if((event -> response_type & 127) == XCB_KEY_PRESS)
         {
             keyEvent = static_cast<xcb_key_press_event_t *>(message);
-            qDebug()<<keyEvent->detail << "Icon keycode " << _icon_keycode;
+            //qDebug()<<keyEvent->detail << "Icon keycode " << _icon_keycode;
             foreach(quint32 maskMods , maskModifiers())
             {
                 if((keyEvent->state==(_icon_modifier | maskMods)) && keyEvent ->detail == _icon_keycode)
                 {
-                    qDebug()<<"Icons called";
+                   // qDebug()<<"Icons called";
                     emit icon_called();
                     return true;
                 }

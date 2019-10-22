@@ -100,8 +100,8 @@ void config::on_b_up_clicked()
 void config::on_b_down_clicked()
 {
     if(_active_element < shortcuts -> _shortcuts_class.size() - 1){
-    qDebug() << _active_element;
-    qDebug() << shortcuts -> _shortcuts_class.size();
+   // qDebug() << _active_element;
+   //qDebug() << shortcuts -> _shortcuts_class.size();
      std::swap(shortcuts -> _shortcuts_class[_active_element],shortcuts -> _shortcuts_class[_active_element+1]);
      _active_element += 1;
      increasePage();
@@ -218,10 +218,10 @@ void config::increasePage()
 void config::decreasePage()
 {
 //means that this object os on the top
-    qDebug()<<"Decreese" << _active_element;
+  //  qDebug()<<"Decreese" << _active_element;
     if(_active_element%8==7)
     {
-        qDebug()<<"called";
+    //    qDebug()<<"called";
         _current_page -= 8;
         setStyle();
 
@@ -231,7 +231,7 @@ void config::wheelEvent(QWheelEvent *event)
 {
 
     QPoint degrees = event -> angleDelta();
-    qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
+   // qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
     if((degrees.ry()<0) && (_current_page + 8 < shortcuts->_shortcuts_class.size())){
         _current_page += 8;
         fill_shortcuts();
@@ -343,9 +343,9 @@ void config::on_always_first_stateChanged(int arg1)
 
 void config::wCheckInit(int el)
 {
-    qDebug()<<"Element" << el;
+   // qDebug()<<"Element" << el;
     if (el == -1)return;
-    qDebug()<<"Weight" << shortcuts -> _shortcuts_class[el].get_weight();
+  //  qDebug()<<"Weight" << shortcuts -> _shortcuts_class[el].get_weight();
     if (shortcuts->_shortcuts_class[el].get_weight() == 0){
 
         ui->always_first->setCheckState(Qt::Unchecked);
@@ -368,21 +368,7 @@ void config::on_submit_clicked()
 
     else if(!seq[0].isEmpty()) shortcuts->_icons = shortcuts->return_key_code(seq[0]);
 
-    //seq = ui->media->keySequence().toString().split("+");
-    //if(seq.size()>1){
-        //shortcuts->_player_mod = shortcuts ->return_modifier(seq[0]);
-        //shortcuts->_player = shortcuts->return_key_code(seq[1]);
-   // }
-     //   else if(!seq[0].isEmpty()) shortcuts->_player = shortcuts->return_key_code(seq[0]);
 
-    /*seq = ui->time->keySequence().toString().split("+");
-    if(seq.size()>1){
-        shortcuts->_time_mod = shortcuts ->return_modifier(seq[0]);
-        shortcuts->_time= shortcuts->return_key_code(seq[1]);
-
-    }else if(!seq[0].isEmpty()) shortcuts->_time= shortcuts->return_key_code(seq[0]);
-    qDebug()<<"Unchanged shortuc time "<<seq << " dd ";
-*/
     seq = ui->config_2->keySequence().toString().split("+");
     if(seq.size()>1)
     {

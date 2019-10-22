@@ -37,7 +37,7 @@ void Saver::save()
 
 void Saver::save_icons(std::vector<int> keys , std::vector<int> modifiers)
 {
-    qDebug() << "Keys in saver " << keys;
+   // qDebug() << "Keys in saver " << keys;
     QJsonArray arr;
     for(auto& i:keys)
     {

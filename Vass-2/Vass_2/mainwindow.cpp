@@ -70,7 +70,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setNewShortcut()
 {
-    qDebug()<<"In set new shortcut  " << shortcuts->_icons;
+   // qDebug()<<"In set new shortcut  " << shortcuts->_icons;
     nativeEventFilter ->upadteHotKeys(shortcuts->_icons,Apps::Icons , shortcuts->_icons_mod);
     nativeEventFilter ->upadteHotKeys(shortcuts->_config,Apps::Config, shortcuts->_config_mod);
 }
@@ -78,7 +78,7 @@ void MainWindow::setVisibleIcons()
 {
 
     if(!Icons.isVisible()){
-        qDebug()<<"called";
+      //  qDebug()<<"called";
         QPoint position = QCursor::pos();
         Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
         Icons.setFocus();

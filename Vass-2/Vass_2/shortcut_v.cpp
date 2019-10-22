@@ -12,8 +12,8 @@ shortcut_v::shortcut_v(){
 
 
     std::vector<int> tmp_keys = saver.read_keys();
-    qDebug() << tmp_keys;
-    qDebug() << "created new Shortcut vector";
+  //  qDebug() << tmp_keys;
+  //  qDebug() << "created new Shortcut vector";
     _shortcuts_file = QObject::tr("shortcuts.abk");
     _summirized_weight = 0;
     readFromFile();
@@ -38,7 +38,7 @@ shortcut_v::shortcut_v(){
 
 
 shortcut_v::~shortcut_v(){
-    qDebug() << "saving keys";
+  //  qDebug() << "saving keys";
     //std::vector<int> keys = {_icons,_config,_time,_player};
     std::vector<int> keys = {_icons,_config};
     std::vector<int> modifiers = {_icons_mod,_config_mod};
@@ -80,10 +80,10 @@ void shortcut_v::writeToFile()
     }
     //
     QStringList data_to_save ={};
-    qDebug() << "I am in write to file";
+    //qDebug() << "I am in write to file";
     for(auto& i:_shortcuts_class)
     {
-      qDebug()<<i.get_path();
+    //  qDebug()<<i.get_path();
       data_to_save.append(i.get_path());
     }
 
@@ -105,7 +105,7 @@ void shortcut_v::readFromFile()
     QStringList data_from_file;
     in.setVersion(QDataStream::Qt_4_5);
     in >> data_from_file;
-    qDebug () << "Here we are";
+  //  qDebug () << "Here we are";
     for(int i = 0 ; i< data_from_file.size();++i)
     {
         parse_names(data_from_file.at(i).toLocal8Bit().constData());
@@ -121,7 +121,7 @@ void shortcut_v::parse_names(QString filename)
     std::regex_search(path,matches,_app_parser);
     path = matches[1]; 
     std::string app = matches[2];
-    qDebug() << "in parsrr";
+   // qDebug() << "in parsrr";
     std::string extension = matches[3];
     std::pair<std::string,QString> name_icon;
     bool is_image = false;
@@ -165,7 +165,7 @@ void shortcut_v::parse_names(QString filename)
 
  int  shortcut_v::return_key_code(QString _key)
 {
-    qDebug()<<_key;
+   // qDebug()<<_key;
     if(_key == "Q")
     {
         return XK_Q;
@@ -240,7 +240,7 @@ void shortcut_v::parse_names(QString filename)
     }
     if(_key == "X")
     {
-        qDebug()<<"In return key code " << XK_X;
+       // qDebug()<<"In return key code " << XK_X;
         return XK_X;
     }
     if(_key == "C")

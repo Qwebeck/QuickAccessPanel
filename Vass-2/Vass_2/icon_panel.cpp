@@ -97,7 +97,7 @@ void icon_panel::wheelEvent(QWheelEvent *event)
 {
 
     QPoint degrees = event -> angleDelta();
-    qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
+   // qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
     if((degrees.ry()>0) && (_current_page + 8 < shortcuts->_shortcuts_class.size())){
         _current_page += 8;
         fill_shortcuts();
@@ -212,7 +212,7 @@ void icon_panel::removeSequence()
     submit_window.setModal(true);
     if(submit_window.exec()){
      for(int i:_to_remove){
-     qDebug()<<i;
+    // qDebug()<<i;
 
      shortcuts->_shortcuts_class[i].set_removable(true);
 
@@ -293,7 +293,7 @@ void icon_panel::execute(int index)
     this ->hide();
     int current_index = index + _current_page;
     if(shortcuts->_shortcuts_class[current_index].get_extension() == ".sh"){
-    qDebug() << "run";
+    //qDebug() << "run";
     QProcess process;
     process.startDetached("/bin/sh", QStringList()<< shortcuts->_shortcuts_class[current_index].get_path());
     }
