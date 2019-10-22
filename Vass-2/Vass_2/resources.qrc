@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/picture.png</file>
+        <file>images/philosophy.png</file>
+        <file>images/music.png</file>
+        <file>images/explorer.png</file>
+        <file>images/engineering.png</file>
+        <file>images/art.png</file>
+        <file>images/icon2.png</file>
+        <file>images/contract.png</file>
+        <file>images/question-mark-button.png</file>
+    </qresource>
+</RCC>
