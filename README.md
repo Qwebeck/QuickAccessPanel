@@ -1,5 +1,5 @@
 # QuickAccessPanel
-Narrower version of project from repository https://github.com/fobannit-studio/Vass-2.
+Narrower and improved version of project from repository https://github.com/fobannit-studio/Vass-2.
 
 <h1>Description</h1>
 The main motivation of application creation was to make your favourite apps reachable from everywhere at any time. 
@@ -43,9 +43,9 @@ Here you can check current shortcuts, by clicking on `Help button`. Also there y
 
 <h1>Notes</h1>
 
-1.Sometimes, using an aplication you could meet next picture. 
+1.Sometimes, using an aplication you could meet next picture. It means, that programm can't figure out an extension of file to choose a default icon for that, and also there are no images in folder with the same name.
 ![unknown](https://github.com/Qwebeck/QuickAccessPanel/blob/master/Vass-2/unknown.png)
-It means, that programm can't figure out an extension of file to choose a default icon for that, and also there are no images in folder with the same name.
+
 
 2. Quick panel also allows you to add your links to your photos. Because photo could be hard enough, so it cold take more time for panel to appear, was decided to show to users default icons, instead of images by itself. You change this in configuration window by enabling and disabling a checkpoint.
 ![wim](https://github.com/Qwebeck/QuickAccessPanel/blob/master/Vass-2/images_with_option_activate_images.png)
