@@ -52,7 +52,7 @@ private:
     event_filter *nativeEventFilter;
 
 
-    shortcut_v * shortcuts;
+    ShortcutVector * shortcuts;
 
 
     QShortcut * openIcons;

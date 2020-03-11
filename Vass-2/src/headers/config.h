@@ -82,7 +82,7 @@ private:
     bool _icon_info_active;
     int _active_element;
     int _current_page;
-    shortcut_v *shortcuts;
+    ShortcutVector *shortcuts;
     std::vector<QPushButton *> _app_buttons;
 
 

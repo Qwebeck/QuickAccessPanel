@@ -7,15 +7,15 @@ config::config(QWidget *parent) :
     ui(new Ui::config)
 {
     ui->setupUi(this);
-    shortcuts = shortcut_v::Initialialize();
+    shortcuts = ShortcutVector::Initialialize();
     _app_buttons ={ui->app_1,ui->app_2,ui->app_3,ui->app_4,ui->app_5,ui->app_6,ui->app_7,ui->app_8};
     _current_page = 0;
     _active_element = -1;
     ui->stackedWidget->setCurrentWidget(ui->page_4);
     _icon_info_active = false;
-    ui->i_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_icons_mod)) + QKeySequence(shortcuts->_icons).toString());
+    ui->i_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->icons_mod)) + QKeySequence(shortcuts->_icons).toString());
 
-    ui->c_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_config_mod)) + QKeySequence(shortcuts->_config).toString());
+    ui->c_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->config_mod)) + QKeySequence(shortcuts->_config).toString());
 
 
     fill_shortcuts();
@@ -363,7 +363,7 @@ void config::on_submit_clicked()
 {
     QStringList seq = ui->icon->keySequence().toString().split("+");
     if(seq.size()>1){
-        shortcuts->_icons_mod = shortcuts ->return_modifier(seq[0]);
+        shortcuts->icons_mod = shortcuts ->return_key_code(seq[0]);
         shortcuts->_icons = shortcuts->return_key_code(seq[1]);
     }
 
@@ -373,16 +373,16 @@ void config::on_submit_clicked()
     seq = ui->config_2->keySequence().toString().split("+");
     if(seq.size()>1)
     {
-        shortcuts->_config_mod = shortcuts ->return_modifier(seq[0]);
+        shortcuts->config_mod = shortcuts ->return_key_code(seq[0]);
         shortcuts->_config = shortcuts->return_key_code(seq[1]);
     }
         else if(!seq[0].isEmpty()) shortcuts->_config = shortcuts->return_key_code(seq[0]);
 
     emit changeHotKey();
-    ui->i_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_icons_mod)) + QKeySequence(shortcuts->_icons).toString());
+    ui->i_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->icons_mod)) + QKeySequence(shortcuts->_icons).toString());
     //ui->t_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_time_mod)) + QKeySequence(shortcuts->_time).toString());
     //ui->m_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_player_mod)) + QKeySequence(shortcuts->_player).toString());
-    ui->c_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_config_mod)) + QKeySequence(shortcuts->_config).toString());
+    ui->c_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->config_mod)) + QKeySequence(shortcuts->_config).toString());
 
 
 

@@ -67,7 +67,7 @@ private:
     int _current_page; // number of elements before first element on this page
     std::pair<int,int> _range;
     std::vector<int> _to_remove;
-    shortcut_v * shortcuts;
+    ShortcutVector * shortcuts;
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
     std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
     std::vector<QPushButton * > _app_buttons; // buttons on ui , connected to shortcuts

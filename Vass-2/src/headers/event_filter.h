@@ -42,7 +42,7 @@ private:
     int _icon_keycode;
     unsigned int _icon_modifier;
     int _config_keycode;
-    unsigned int _config_modifier;
+    unsigned int config_modifier;
 
 };
 

@@ -20,7 +20,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     setWindowIcon(icon);
     InitActions();
     createTrayIcons();
-    shortcuts = shortcut_v::Initialialize();
+    shortcuts = ShortcutVector::Initialialize();
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setPen(Qt::NoPen);
@@ -32,8 +32,8 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     nativeEventFilter = new event_filter(shortcuts->_icons,
                                          shortcuts->_config,
                                          this,
-                                         shortcuts->_icons_mod,
-                                         shortcuts->_config_mod
+                                         shortcuts->icons_mod,
+                                         shortcuts->config_mod
                                          ); // m - icons , t - clock
     qApp->installNativeEventFilter(nativeEventFilter);
     connect(nativeEventFilter,&event_filter::icon_called,this,&MainWindow::setVisibleIcons);
@@ -71,8 +71,8 @@ MainWindow::~MainWindow()
 void MainWindow::setNewShortcut()
 {
    // qDebug()<<"In set new shortcut  " << shortcuts->_icons;
-    nativeEventFilter ->upadteHotKeys(shortcuts->_icons,Apps::Icons , shortcuts->_icons_mod);
-    nativeEventFilter ->upadteHotKeys(shortcuts->_config,Apps::Config, shortcuts->_config_mod);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_icons,Apps::Icons , shortcuts->icons_mod);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_config,Apps::Config, shortcuts->config_mod);
 }
 void MainWindow::setVisibleIcons()
 {

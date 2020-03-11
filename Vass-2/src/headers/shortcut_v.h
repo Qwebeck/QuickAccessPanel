@@ -21,29 +21,29 @@ enum class State
     Ranged,
     Single
 };
-class shortcut_v
+class ShortcutVector
 {
 private:
-    static shortcut_v *Shortcuts_Base;
-    shortcut_v();
+    static ShortcutVector *Shortcuts_Base;
+    ShortcutVector();
     static const std::map<std::string, int> _keymapping;
 
 public:
-    ~shortcut_v();
+    ~ShortcutVector();
     //singleton class
-    static shortcut_v *Initialialize()
+    static ShortcutVector *Initialialize()
     {
         if (Shortcuts_Base == nullptr)
-            Shortcuts_Base = new shortcut_v;
+            Shortcuts_Base = new ShortcutVector;
         return Shortcuts_Base;
     }
 
     int _icons;
 
     int _config;
-    int _icons_mod;
-
-    int _config_mod;
+    // Keycodes of modifiers that stands before icons and config correspondly 
+    unsigned int icons_mod;
+    unsigned int config_mod;
     Saver saver;
     std::vector<Shortcut> _shortcuts_class;
     std::vector<int> _hotKeys;
@@ -56,7 +56,6 @@ public:
     void writeToFile();
     void readFromFile();
     int return_key_code(QString);
-    int return_modifier(QString);
     std::string setModPrefix(unsigned int modifier);
 };
 

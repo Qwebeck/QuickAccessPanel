@@ -18,7 +18,7 @@ icon_panel::icon_panel(QWidget *parent) :
     _app_buttons ={ui->app_1,ui->app_2,ui->app_3,ui->app_4,ui->app_5,ui->app_6,ui->app_7,ui->app_8};
     _image_labels = {ui->label_1,ui->label_2,ui->label_3,ui->label_4,ui->label_5,ui->label_6,ui->label_7,ui->label_8};
     for(QPushButton * app:_app_buttons)app->installEventFilter(this);
-    shortcuts = shortcut_v::Initialialize();
+    shortcuts = ShortcutVector::Initialialize();
     fill_shortcuts();
 }
 

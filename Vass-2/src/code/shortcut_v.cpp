@@ -9,9 +9,9 @@
 #include <X11/Xutil.h>
 #include <xcb/xcb.h>
 #include <map>
-shortcut_v *shortcut_v::Shortcuts_Base = nullptr;
+ShortcutVector *ShortcutVector::Shortcuts_Base = nullptr;
 
-const std::map<std::string, int> shortcut_v::_keymapping = {
+const std::map<std::string, int> ShortcutVector::_keymapping = {
     {"Q", XK_Q},
     {"W", XK_W},
     {"E", XK_E},
@@ -40,7 +40,7 @@ const std::map<std::string, int> shortcut_v::_keymapping = {
     {"Alt", Mod1Mask},
     {"Shift", ShiftMask}};
 
-shortcut_v::shortcut_v()
+ShortcutVector::ShortcutVector()
 {
 
     std::vector<int> tmp_keys = saver.read_keys();
@@ -54,8 +54,8 @@ shortcut_v::shortcut_v()
         _icons = Qt::Key_M;
         _config = Qt::Key_Q;
 
-        _icons_mod = ControlMask;
-        _config_mod = ControlMask;
+        icons_mod = ControlMask;
+        config_mod = ControlMask;
     }
     else
     {
@@ -63,25 +63,24 @@ shortcut_v::shortcut_v()
         _config = tmp_keys[1];
 
         std::vector<int> tmp_mod = saver.read_modifiers();
-        _icons_mod = tmp_mod[0];
-        _config_mod = tmp_mod[1];
+        icons_mod = tmp_mod[0];
+        config_mod = tmp_mod[1];
     }
 
     // _hotKeys = {_icons,_config,_time,_player};
     _hotKeys = {_icons, _config};
 }
 
-shortcut_v::~shortcut_v()
+ShortcutVector::~ShortcutVector()
 {
     //  qDebug() << "saving keys";
     //std::vector<int> keys = {_icons,_config,_time,_player};
     std::vector<int> keys = {_icons, _config};
-    std::vector<int> modifiers = {_icons_mod, _config_mod};
-    //std::vector<int> modifiers = {_icons_mod,_config_mod,_time_mod,_player_mod};
+    std::vector<int> modifiers = {icons_mod, config_mod};
     saver.save_icons(keys, modifiers);
 }
 
-std::string shortcut_v::setModPrefix(unsigned int modifier)
+std::string ShortcutVector::setModPrefix(unsigned int modifier)
 {
     if (modifier == ControlMask)
     {
@@ -101,7 +100,7 @@ std::string shortcut_v::setModPrefix(unsigned int modifier)
     }
 }
 
-void shortcut_v::writeToFile()
+void ShortcutVector::writeToFile()
 {
 
     if (_shortcuts_file.isEmpty())
@@ -126,7 +125,7 @@ void shortcut_v::writeToFile()
     out << data_to_save;
 };
 
-void shortcut_v::readFromFile()
+void ShortcutVector::readFromFile()
 {
     if (_shortcuts_file.isEmpty())
         return;
@@ -147,7 +146,7 @@ void shortcut_v::readFromFile()
     }
 };
 
-void shortcut_v::parse_names(QString filename)
+void ShortcutVector::parse_names(QString filename)
 {
     //    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
     std::smatch matches;
@@ -197,26 +196,10 @@ void shortcut_v::parse_names(QString filename)
     _shortcuts_class.emplace_back(extension, name_icon.first, filename, name_icon.second, is_image);
 }
 
-int shortcut_v::return_key_code(QString _key)
+int ShortcutVector::return_key_code(QString _key)
 {
     std::map<std::string, int>::const_iterator keypair = this -> _keymapping.find(_key.toUtf8().constData());
     int keycode = keypair == this -> _keymapping.end() ? Qt::Key_0 : keypair -> second; 
     return keycode;
 };
 
-int shortcut_v::return_modifier(QString mod)
-{
-    if (mod == "Ctrl")
-    {
-        return ControlMask;
-    }
-    if (mod == "Alt")
-    {
-        return Mod1Mask;
-    }
-    if (mod == "Shift")
-    {
-        return ShiftMask;
-    }
-    return 0;
-}
